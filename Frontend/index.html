@@ -1,0 +1,105 @@
+<html>
+        <head>
+                <title> Employee Registration</title>
+
+                <style>
+                body{
+                font-family:sans-serif;
+                background:#f4f6f9;
+                margin:0;
+                padding:0;
+                }
+                .container{
+                width: 420px;
+                margin: 50px auto;
+                background: white;
+                padding:30px;
+                border-radius:15px;
+                box-shadow:0 0 10px rgba(0,0,0,.2);
+                }
+                h2{
+                text-align: center;
+                margin-bottom: 25px;
+                }
+                input,select{
+                width:100%;
+                padding:12px;
+                margin:10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                }
+                button{
+                width: 100%;
+                padding: 12px;
+                background: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                }
+                button:hover{
+                background: #0056b3;
+                }
+                #msg{
+                margin-top: 15px;
+                text-align: center;
+                font-weight: bold;
+                color: green;
+                }
+
+
+                </style>
+
+        </head>
+
+        <body>
+                <div class="container">
+                        <h2>Employee Registration</h2>
+
+                        <form id="EmpForm">
+                                <input type="text" id="empID" placeholder="Enter Emp ID" required>
+                                <input type="text" id="name" placeholder="Enter Name" required>
+                                <input type="email" id="email" placeholder="Enter Email Address" required>
+                                <select id="Dept" >
+                                        <option> Cloud/DevOps</option>
+                                        <option> SD </option>
+                                        <option> QA </option>
+                                        <option> AI/ML </option>
+                                        <option> Cybersecurity </option>
+                                </select>
+
+                                <button type="submit">Register</button>
+                        </form>
+                        <p id="msg"></p>
+                </div>
+
+                <script>
+                        document.getElementById("EmpForm").addEventListener("submit", async function(e) {
+                                e.preventDefault();
+                                const data = {
+                                        empID: document.getElementById("empID").value,
+                                        name: document.getElementById("name").value,
+                                        email: document.getElementById("email").value,
+                                        Dept: document.getElementById("Dept").value
+                                };
+                                try {
+                                        const response = await fetch("/register", {
+                                                method: "POST",
+                                                headers: {
+                                                        "Content-Type": "application/json"
+                                                },
+                                                body: JSON.stringify(data)
+                                        });
+                                        const result = await response.json();
+                                        document.getElementById("msg").innerHTML = result.message;
+                                } 
+                                catch (err) {
+                                        console.error(err);
+                                }
+                        });
+                </script>
+        </body>
+
+</html>
