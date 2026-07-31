@@ -1,32 +1,51 @@
-Multi-Tier Enterprise Application Infrastructure
+# Multi-Tier Enterprise Application Infrastructure
 
-Overview
-The project presents a secure multi-tiered application infrastructure that was designed and built on Amazon Web Services. The application is deployed on a public-facing frontend, private backend, and private database servers. The application consists of an NGINX frontend web server, a flask backend API, and Amazon RDS MySQL database interconnected with VPC, security groups, and NAT Gateway.
+This project is an implementation of a secure multi-tiered application infrastructure on AWS. The application is deployed on AWS using a public frontend, private backend, and private database. The application consists of an Nginx-powered frontend, a Flask API backend, and an Amazon RDS MySQL database, connected through VPC, security groups, and a NAT Gateway.
 
-Features
-• Public frontend application hosted on Amazon EC2 web server
-• Private backend API hosted on Amazon EC2 web server
-• Private Amazon RDS MySQL database
+## Features
+- Public frontend (Nginx)
+- Private backend (Flask API)
+- Private database (Amazon RDS)
+- Isolated networks via VPC
+- Route tables, internet gateway, and NAT gateway
+- IAM users
+- CloudWatch monitoring
+- Frontend to backend to database data flow
 
-• VPC isolated subnets
-• Internet gateway and route tables
-• Network Address Translation (NAT) gateway
-• IAM users and Cloudwatch monitoring
+## AWS Services
+- Amazon EC2
+- Amazon VPC
+- Subnets
+- Internet Gateway
+- NAT Gateway
+- Route tables
+- Security groups
+- Amazon RDS (MySQL)
+- IAM
+- CloudWatch
 
-• Frontend to backend to database communication
-AWS Services
-Amazon EC2, Amazon VPC, Public and Private Subnets, Internet Gateway, NAT Gateway, Route Tables, Security Groups, Amazon RDS MySQL, IAM, Amazon CloudWatch.
-Technologies
-HTML, CSS, JavaScript, Python, Flask, PyMySQL, Nginx, Ubuntu, MySQL.
+## Technologies
+- HTML
+- CSS
+- JavaScript
+- Python
+- Flask
+- PyMySQL
+- Nginx
+- Ubuntu
+- MySQL
 
-Project’s Workflow
-1. The user sends an HTTP request by filling out the form on the website.
-2. The frontend NGINX server responds to the request and routes it to the backend flask server.
-3. The flask server receives the request and saves the information in the database.
-4. The database on Amazon RDS MySQL stores the request data.
-5. The user receives a success message on the frontend.
-The Project Structure
+## Project Workflow
+1. A user sends an HTTP POST request to the application’s frontend (Nginx).
+2. Nginx routes the request to the backend API.
+3. The backend processes the request and stores the data in the database.
+4. The database returns a response to the backend, which in turn relays it to the frontend.
+5. The frontend displays the result of the operation to the user.
+
+The project structure is as follows:
+```
 frontend/
 backend/
 screenshots/
 README.md
+```
